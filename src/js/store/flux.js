@@ -12,8 +12,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			characters: []
 		},
+		
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -23,6 +25,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+				fetch("https://swapi.dev/api/people")
+				.then((response)=> response.json())
+				.then((data)=>{
+					setStore({characters:data.results})	
+				})
+				.catch((error)=> {console.log(error)})
 			},
 			changeColor: (index, color) => {
 				//get the store
