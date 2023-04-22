@@ -13,7 +13,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			characters: []
+			characters: [] ,
+			planets: [] ,
+			starships: []
 		},
 		
 		actions: {
@@ -31,7 +33,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({characters:data.results})	
 				})
 				.catch((error)=> {console.log(error)})
-			},
+			fetch("https://swapi.dev/api/planet")
+			.then((response)=> response.json())
+			.then((data)=>{
+				setStore({planets:data.results})	
+			})
+			.catch((error)=> {console.log(error)})
+		fetch("https://swapi.dev/api/starships")
+		.then((response)=> response.json())
+		.then((data)=>{
+			setStore({starships:data.results})	
+		})
+		.catch((error)=> {console.log(error)})
+	},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
