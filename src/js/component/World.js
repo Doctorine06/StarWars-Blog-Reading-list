@@ -1,6 +1,9 @@
 
-import React form react;
-export const PeopleCard = ({character, index}) =>         const { store, actions } = useContext(Context);
+import React from react;
+export const PeopleCard = ({character, index}) =>        
+let planes= starships
+{
+ const { store, actions } = useContext(Context);
         const params = useParams();
         let char = store.people.find((item, index) => index == params.theIndex)
     
@@ -19,7 +22,7 @@ export const PeopleCard = ({character, index}) =>         const { store, act
           </div>
         </div>
       );
-    
+};
     
     PeopleCard.propTypes = {
         match: PropTypes.object,
