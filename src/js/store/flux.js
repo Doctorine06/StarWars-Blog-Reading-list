@@ -3,11 +3,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			favorites:
 			apiUrl: 'https://www.swapi.tech/api/',
-        people: [],
-        peopelecard: [],
-        planets: [],
-        vehicles: [],
-        vehicle:[],
+			peopelecard: [],
+			planets: [],
+			vehicles: [],
 			demo: [
 				{
 					title: "FIRST",
