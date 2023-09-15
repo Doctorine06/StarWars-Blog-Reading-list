@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from react;
+import React, {useState, useEffect, useContext} from "react";
 import propTypes from "prop-types";
 import {Link, useParams} from "../store/appContext";
 export const API = (props) => {

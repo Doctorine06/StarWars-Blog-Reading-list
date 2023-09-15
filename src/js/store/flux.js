@@ -1,72 +1,76 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	return {
-		store: {
-			favorites:
-			apiUrl: 'https://www.swapi.tech/api/',
-			peopelecard: [],
-			planets: [],
-			vehicles: [],
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
-			characters: [] ,
-			planets: [] ,
-			starships: []
-		},
-		
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-				fetch("https://swapi.dev/api/people")
-				.then((response)=> response.json())
-				.then((data)=>{
-					setStore({characters:data.results})	
-				})
-				.catch((error)=> {console.log(error)})
-			fetch("https://swapi.dev/api/planet")
-			.then((response)=> response.json())
-			.then((data)=>{
-				setStore({planets:data.results})	
-			})
-			.catch((error)=> {console.log(error)})
-		fetch("https://swapi.dev/api/starships")
-		.then((response)=> response.json())
-		.then((data)=>{
-			setStore({starships:data.results})	
-		})
-		.catch((error)=> {console.log(error)})
-	},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
-		}
-	};
-};
-
-export default getState;
+	    return {
+	      store: {
+	        favorites: [],
+	        apiUrl: 'https://www.swapi.tech/api/',
+	        people: [],
+	        peopelecard: [],
+	        planets: [],
+	        vehicles: [],
+	        vehicle:[],
+	        demo: [],
+	      },
+	      actions: {
+	        // Use getActions to call a function within a fuction
+	        getData: (entity, id)=> {
+	          fetch(`https://swapi.dev/api/${entity}`)
+	            .then((response) => {
+	              if (!response.ok) {
+	                throw Error(response.statusText);
+	              }
+	              // Read the response as json.
+	              return response.json();
+	            })
+	            .then((responseAsJson) => {
+	              // Do stuff with the JSONified response
+	              console.log(responseAsJson.results);
+	              setStore({ [entity]: responseAsJson.results });
+	            })
+	            .catch((error) => {
+	              console.log("Looks like there was a problem: \n", error);
+	            });
+	        },
+	        
+	        addFavorites: (item) => { //Favorites Function
+	            const store = getStore(); //Access to the Store
+	            store.favorites.push(item) //Push Item
+	            setStore(store) //Save the Changes under Store (Update the State)
+	            },
+	  
+	        addFav: (newFav) => {
+	          let newFavorites = getStore().favorites;
+	          newFavorites.push(newFav);
+	  
+	          setStore({ favorites: newFavorites });
+	        },
+	
+	        removeFavorites: index => { //Remove Favorites Function
+	            const store = getStore();
+	            let updatedList = store.favorites.filter(
+	            (favorites, i) => index != i
+	            );
+	            setStore({favorites:updatedList})
+	            },
+	  
+	        deleteFav: (name) => {
+	          let filtered = getStore().favorites.filter((item) => item.name != name);
+	  
+	          setStore({ favorites: filtered });
+	        },
+	  
+	        changeColor: (index, color) => {
+	          //get the store
+	          const store = getStore();
+	  
+	          //we have to loop the entire demo array to look for the respective index
+	          //and change its color
+	          const demo = store.demo.map((elm, i) => {
+	            if (i === index) elm.background = color;
+	            return elm;
+	          });
+	  
+	          //reset the global store
+	          setStore({ demo: demo });
+	        },
+	      },
+    };}
