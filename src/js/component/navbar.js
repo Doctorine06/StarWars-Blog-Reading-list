@@ -1,3 +1,4 @@
+import Stripe// install stripe
 import React, {useContext} from "react";
 import {Single} from "../views/single"
 import { Link, useParams } from "react-router-dom";
