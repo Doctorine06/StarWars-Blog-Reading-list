@@ -1,3 +1,11 @@
+
+import React from "react";
+
+const Banking Information =({ account, index}) => { 
+    const { store, actions } = useContext(Context);
+    const params = useParams();
+    let account= store.account.find((item,index) => index == params.theIndex )
+
 // Stripe.apiKey = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc';
 
 // PaymentLinkCreateParams params =
