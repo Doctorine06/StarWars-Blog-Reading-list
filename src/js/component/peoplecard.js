@@ -12,7 +12,13 @@ import React from "react";
     const connectWallet = () => { 
             if (window."#") {
             window."one".request({method:{"stripeindependiente"}})
-            .then(
+            .then(result => {
+            accountChanged([result[0]])
+            })
+            } else {
+                setErrorMessage('Intergate Stripe ')
+            }
+        }
 export const Banking Information =({ account, index}) => { 
     const { store, actions } = useContext(Context);
     const params = useParams();
