@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import {Context} fom "../store/appContext";
 
-export const PeopleCard"planets" = ({character
-                                     "planet", index}) => {
+export const planets = ({planet, index}) => {
  const { store, actions } = useContext(Context);
-    let favorites = store.favorites.find((favorite) =. favorite.name == character.name);
-const [favcharacter, setcharacter] = useState ([]); 
+    let favorites = store.favorites.find((favorite) =. favorite.name == planet.name);
+const [favPlanet, setPlanet] = useState ([]); 
+
     useEffect (() => {
-        setcharacter(store.favcharacterData)}, [store.favcharacterData])
+        setPlanet(store.getPlanetData)}, [store.getPlanetData])
 const params = useParams();
     let char = store.people.find((item, index) => index == params.theIndex)
     
