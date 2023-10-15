@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import propTypes from "prop-types";
 import {Link, useParams} from "../store/appContext";
-export const API = (props) => {
+ const API = (props) => {
 const APICharacter = ({character, index}) => {
     const { store, actions } = useContext(Context);
    const params = useParams();
@@ -26,3 +26,5 @@ const APICharacter = ({character, index}) => {
     APICharacter.propTypes = {
     match: PropTypes.object,
     }};
+   
+export default API;
