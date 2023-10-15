@@ -10,16 +10,25 @@ export const PeopleCard = ({character, index}) => {
 
 
   return (
-    <div className="card">
+    <div className="card" style={{ width: "18rem", display: "inline-block"}}>
       <img
         className="card-img-top"
         src={"https://github.com/tbone849/star-wars-guide/blob/master/build/assets/img/characters/" + {index} + ".jpg?raw=true"}
-        alt=""
+        alt="Card Img Limit (cap)"
       ></img>
       <div className="card-body">
         <h5 classname="card-title">{char.name}</h5>
-        <p className="card-text">{char.gender}</p>
-        <p className="card-text">{char.height}</p>
+        <div>Gender: {char.gender}</div>
+        <div>Height: {char.height} cm</div>
+        <div>Birth Year: {char.birth_year}</div>
+        <div className="options d-flex justify-content-between">
+          <Link to={"/character/details/" + index}>
+          <button className="btn btn-primary">
+                Learn more!
+          </button>
+          </Link>
+          <a onClick {() => actions.addFavorites(char)} className={favs ? "fas fa-heart" : "far fa-heart}</a>
+          </div>
       </div>
     </div>
   );
