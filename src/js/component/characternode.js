@@ -21,6 +21,7 @@ export const PeopleCard = ({character, index}) => {
         <div>Gender: {char.gender}</div>
         <div>Height: {char.height} cm</div>
         <div>Birth Year: {char.birth_year}</div>
+        <div>Saga: {char.saga}</div>
         <div className="options d-flex justify-content-between">
           <Link to={"/character/details/" + index}>
           <button className="btn btn-primary">
