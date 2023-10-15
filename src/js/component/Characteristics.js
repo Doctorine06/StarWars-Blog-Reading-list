@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 import propTypes from "prop-types";
 import {Link, useParams} from "../store/appContext";
  const API = (props) => {
-const APICharacter = ({character, index}) => {
+export const APICharacter = ({character, index}) => {
     const { store, actions } = useContext(Context);
    const params = useParams();
       let char = store.people.find((item, index) => index == params.theIndex)
@@ -27,4 +27,3 @@ const APICharacter = ({character, index}) => {
     match: PropTypes.object,
     }};
    
-export default API;
