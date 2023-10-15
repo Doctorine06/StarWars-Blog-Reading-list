@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import {Context} fom "../store/appContext";
 
-export const planets = ({planet, index}) => {
+export const Planets = ({planet, index}) => {
  const { store, actions } = useContext(Context);
     let favorites = store.favorites.find((favorite) =. favorite.name == planet.name);
 const [favPlanet, setPlanet] = useState ([]); 
@@ -22,23 +22,23 @@ const params = useParams();
     alt="Card img cap"
 ></img>
     <div className="card-body">
-    <h5 classname="card-title">{char.name}</h5>
-    <p className="card-text">{char.gender}</p>
-    <p className="card-text">{char.height}</p>
-    <p className+"card-text">{char.saga}</p>
+    <h5 classname="card-title">{planet.name}</h5>
+    <div>Diameter: {planet.diameter}</div>
+    <div>Population: {planet.population}</div>
+    <div>Climate: {planet.climate}</div>
     <div className="options d-flex justify-content-between">
-        <Link to={"/character/details/" + index}>
+        <Link to={"/planet/details/" + index}>
             <btuuon className="btn btn-primary">
-        Learn how!
+        Learn more!
         </button>
         </Link>
-        <a onClcik={() => actions.addFavorites(character)} className={ favs ? "fas fa-heart" : "far fa-heart"}></a>
+        <a onClcik={() => actions.addFavorites(planet)} className={ favs ? "fas fa-heart" : "far fa-heart"}></a>
         
     </div>
     </div>
     );
 };
     
-    PeopleCard.propTypes = {
+    Planets.propTypes = {
     match: PropTypes.object,
    };
