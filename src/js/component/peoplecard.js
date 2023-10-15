@@ -13,14 +13,13 @@ return(
         <img 
         className="card-img-top"
         src={"#" +{index} + ".jpg?raw=true"}
-        alt"what is .jpg?raw=true?"
-        ></img>
+        alt="" />
         <div className="card-body">
             <h5 className="card-title">{char.name}</h5>
-            <p className="card-text">{char.gender}</p>
-            <p className="card-text"{char.height}</p>
+           <div>{char.gender}</div>
+            <div>{char.height}</div>
         </div>
-    </div>
+        </div>
 );
 };
 PeopleCards.propTypes = { 

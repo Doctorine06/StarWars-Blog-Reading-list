@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const PeopleCard = ({character, index}) => {
+export const PepoleCard = ({character, index}) => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     let char = store.people.find((item, index) => index == params.theIndex)
@@ -28,13 +28,13 @@ export const PeopleCard = ({character, index}) => {
                 Learn more!
           </button>
           </Link>
-          <a onClick {() => actions.addFavorites(char)} className={favs ? "fas fa-heart" : "far fa-heart}</a>
-          </div>
+          <a onClick {() => actions.addFavorites(char)} className={favorite ? "fas fa-heart" : "far fa-heart}</a>
+      </div>
       </div>
     </div>
   );
 };
 
-PeopleCard.propTypes = {
+PepoleCard.propTypes = {
     match: PropTypes.object,
   };

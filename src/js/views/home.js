@@ -2,7 +2,10 @@ import React, { useContext } from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
-// import Card from "../component/Card.js";
+import { PeopleCard } from "../component/Pepole";
+import { PeopleCards } from "../component/peoplecard";
+
+
 
 export const Home = () => {
 	const {store,actions} = useContext(Context)
@@ -11,9 +14,9 @@ export const Home = () => {
 		<h3>Characters</h3>
 		<div>
 		{
-			store.characters.map((character,index)=>{
+			store.people.map((character,index)=>{
 				return(
-					<Card character={character} key={index}/>
+					<PeopleCard character={character} key={index}/>
 					
 				)
 			})
