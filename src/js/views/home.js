@@ -13,17 +13,32 @@ import { PeopleCards } from "../component/peoplecard";
 export const Home = () => {
 	const {store,actions} = useContext(Context)
 	return(
-	<div className="text-center mt-5">
-		<h3>Characters</h3>
+	<div>
+	<section>
+		<h2>Characters</h2>
 		<div>
-		{
-			store.people.map((character,index)=>{
-				return(
-					<PeopleCard character={character} key={index}/>
-					
-				)
-			})
-		}</div>	
+		{store.people.map((character,index)=>{
+				return <PeopleCards character={character} key={index}/>;
+			})}
+		</div>
+		</section>
+	<section>
+		<h2>Planets</h2>
+		<div>
+			{store.planets.map(world, index) => { 
+			return <Planets key={index} index={index} planets={world} />;
+			})}
+			</div>
+		</section>
+		
+		<section>
+			<h2>Vehicles</h2>
+			<div>
+				{store.vehicles.map((ship, index) => {
+					return <Vehicles key={index} index={index} vehicles={ship} />;
+					})}
+	</div>
+	</section>
 	</div>
 	)
 };
