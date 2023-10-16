@@ -1,43 +1,43 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { People } from "../component/people";
+import { Planets } from "../component/planets";
+import { Vehicles } from "../component/vehicles";
 
-import "../../styles/demo.css";
+export const Home = () => {
+  const { store, actions } = useContext(Context);
 
-export const Demo = () => {
-	const { store, actions } = useContext(Context);
+  return (
+    <div>
+      <section>
+        <h2>Characters</h2>
+        <div>
+          {store.people.map((character, index) => {
+            return <People key={index} index={index} char={character} />;
+          })}
+        </div>
+      </section>
 
-	return (
-		<div className="container">
-			<ul className="list-group">
-				{store.demo.map((item, index) => {
-					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
-					);
-				})}
-			</ul>
-			<br />
-			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
-			</Link>
-		</div>
-	);
+      <section>
+        <h2>Planets</h2>
+        <div>
+          {store.planets.map((world, index) => {
+            return <Planets key={index} index={index} planet={world} />;
+          })}
+        </div>
+      </section>
+
+      <section>
+        <h2>Vehicles</h2>
+        <div>
+          {store.vehicles.map((ship, index) => {
+            return <Vehicles key={index} index={index} vehicle={ship} />;
+          })}
+        </div>
+      </section>
+
+    </div>
+  );
 };
