@@ -2,12 +2,6 @@ import React, { useContext } from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
-<<<<<<< HEAD
-import { PeopleCard } from "../component/Pepole";
-import { PeopleCards } from "../component/peoplecard";
-
-=======
->>>>>>> refs/remotes/origin/master
 
 
 export const Home = () => {
