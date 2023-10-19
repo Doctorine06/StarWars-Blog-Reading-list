@@ -89,7 +89,7 @@ export const Single = (props) => {
             : "loading"}</div>
       </div>
     </div>
-  );
+);
 };
 
 Single.propTypes = {
