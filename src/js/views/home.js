@@ -16,12 +16,13 @@ export const Home = () => {
 			})}
 		</div>
 		</section>
-	<section>
+
+		<section>
 		<h2>Planets</h2>
 		<div>
-			{store.planets.map(world, index) => { 
-			return <Planets key={index} index={index} planets={world} />;
-			})}
+		{store.planets.map((world, index) => { 
+		return <Planets key={index} index={index} planets={world} />;
+		})}
 			</div>
 		</section>
 		
